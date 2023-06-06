@@ -82,5 +82,21 @@ namespace YourNamespace.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult CreateCustomer(Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                customer.TodayDate = DateTime.Now; // Set the current date
+
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index", "Home"); // Redirect to a success page
+            }
+
+            return View(_context); // Show the form again with validation errors
+        }
+
     }
 }

@@ -1,6 +1,42 @@
-﻿@{
+﻿@model Customer
+@{
     ViewData["Title"] = "Upload Excel File";
 }
+
+
+
+<h1>Create Customer</h1>
+
+<form asp-controller="Home" asp-action="CreateCustomer" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CheckoutDate">Checkout Date</label>
+        <input asp-for="CheckoutDate" type="date" class="form-control" />
+        <span asp-validation-for="CheckoutDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
+
 
 <h1>Upload Excel File</h1>
 
