@@ -37,24 +37,25 @@ namespace YourNamespace.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Upload(IFormFile file)
+        public async Task<IActionResult> Upload(FileUploadViewModel model)
         {
-            if (file == null || file.Length == 0)
+            
+            if (model.File == null || model.File.Length == 0)
             {
-                ModelState.AddModelError("File", "Please select an Excel file to upload.");
-                return View("Index");
+                ModelState.AddModelError("", "Please select an Excel file to upload.");
+                return View(model);
             }
 
-            if (!Path.GetExtension(file.FileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
+            if (!Path.GetExtension(model.File.FileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
             {
                 ModelState.AddModelError("File", "Please select an Excel file (.xlsx).");
-                return View("Index");
+                return View(model);
             }
 
-            var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", file.FileName);
+            var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", model.File.FileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
-                await file.CopyToAsync(stream);
+                await model.File.CopyToAsync(stream);
             }
 
             using (var package = new ExcelPackage(new FileInfo(filePath)))
