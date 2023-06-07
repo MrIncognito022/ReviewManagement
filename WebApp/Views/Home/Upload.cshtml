@@ -1,17 +1,28 @@
 ﻿@model WebApp.Models.FileUploadViewModel
 
-<h1>Upload Excel File</h1>
-
-<form asp-action="Upload" asp-controller="Home" method="post" enctype="multipart/form-data">
-    <div asp-validation-summary="All" class="text-danger"></div>
-
-    <div class="form-group">
-        <label asp-for="File" class="control-label">Select Excel File:</label>
-        <input asp-for="File" type="file" class="form-control" />
-        <span asp-validation-for="File" class="text-danger"></span>
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-dark bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Create Category</h2>
+            </div>
+        </div>
     </div>
+    <div class="card-body p-4">
+        <form asp-action="Upload" asp-controller="Home" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Upload</button>
+            <div class="form-group">
+
+                <label asp-for="File" class="control-label">Select Excel File:</label>
+                <input asp-for="File" type="file" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-dark">Upload</button>
+            </div>
+
+        </form>
     </div>
-</form>
+</div>
