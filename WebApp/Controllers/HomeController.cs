@@ -30,6 +30,11 @@ namespace YourNamespace.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Upload()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Upload(IFormFile file)
