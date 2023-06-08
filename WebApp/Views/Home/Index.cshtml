@@ -1,7 +1,18 @@
 ﻿
 <h1>Review Management System</h1>
 
-<a asp-action="CreateCustomer" asp-asp-controller="Home" class="btn btn-dark">Create Customer</a>
+
+
+<div class="row mt-4">
+    <div class="col-6 col-md-3">
+        <a asp-action="CreateCustomer" asp-asp-controller="Home" class="btn btn-dark">Create Customer</a>
+    </div>
+    <div class="col-6 col-md-3">
+        <a asp-controller="Home" asp-action="Upload" class="btn btn-outline-dark">upload Excel File</a>
+    </div>
+</div>
+
+
 
 @*<h1>Upload Excel File</h1>
 

@@ -105,7 +105,7 @@ namespace YourNamespace.Controllers
 
                 await _context.SaveChangesAsync();
             }
-
+            TempData["success"] = "File Uploaded Successfully";
             return RedirectToAction("Index");
         }
 
