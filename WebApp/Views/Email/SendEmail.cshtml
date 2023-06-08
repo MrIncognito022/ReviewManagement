@@ -4,26 +4,22 @@
     <div class="card-header bg-dark bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2">Review Management System</h2>
+                <h2 class="text-white py-2">Send Email To All Customers</h2>
             </div>
         </div>
     </div>
     <div class="card-body p-4">
         <div class="row mt-4">
+            <div class="col-4"></div>
             <div class="col-4 col-md-4">
-                <a asp-action="CreateCustomer" asp-asp-controller="Home" class="btn btn-outline-dark form-control">Create Customer</a>
+                <a asp-controller="Email" asp-action="SendFeedbackEmails" class="btn btn-outline-dark form-control">Send</a>
             </div>
-            <div class="col-4 col-md-4">
-                <a asp-controller="Home" asp-action="Upload" class="btn btn-outline-dark form-control">upload Excel File</a>
-            </div>
-            <div class="col-4 col-md-4">
-                <a asp-controller="Email" asp-action="SendEmail" class="btn btn-dark form-control">Send Email</a>
-            </div>
+            <div class="col-4"></div>
         </div>
     </div>
 </div>
 
-@*
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-12">
@@ -58,16 +54,3 @@
         });
     </script>
 }
-<h1>Upload Excel File</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-controller="Home" asp-action="Upload" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="file">Select Excel File</label>
-                <input type="file" name="file" id="file" class="form-control" />
-            </div>
-            <button type="submit" class="btn btn-primary">Upload</button>
-        </form>
-    </div>
-</div>*@

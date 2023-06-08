@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 using System.Net.Mail;
 using WebApp.Data;
@@ -13,7 +14,13 @@ public class EmailController : Controller
         _Context = dbContext;
     }
 
+    public IActionResult SendEmail()
+    {
+        var model = _Context.Customers.ToList();
+        return View(model);
+    }
     // Action to send feedback emails
+    [HttpGet]
     public IActionResult SendFeedbackEmails()
     {
         List<Customer> customers = _Context.Customers.ToList();
@@ -29,8 +36,8 @@ public class EmailController : Controller
             // You can save the feedback URL in the database if needed
             // customer.FeedbackUrl = feedbackUrl;
         }
-        TempData["success"] = "Email send Successfully";
-        return RedirectToAction("index", "Home");
+        TempData["success1"] = "Email send Successfully";
+        return RedirectToAction ("Index","Home");
     }
 
     // Action to handle customer feedback

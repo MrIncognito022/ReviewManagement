@@ -28,8 +28,7 @@ namespace YourNamespace.Controllers
 
         public IActionResult Index()
         {
-            var model = _context.Customers.ToList();
-            return View(model);
+            return View();
         }
 
         [HttpGet]
