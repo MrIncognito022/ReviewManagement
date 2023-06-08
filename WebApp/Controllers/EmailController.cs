@@ -29,7 +29,7 @@ public class EmailController : Controller
         {
 
             // Generate a unique feedback URL for each customer
-            string feedbackUrl = $"https://localhost:7129/feedback/{customer.Id}";
+            string feedbackUrl = $"https://localhost:7129/Email/Feedback/{customer.Id}";
 
             // Send email with feedback link to the customer's email
             SendEmail(customer.Email, "Feedback Request", $"Please provide your feedback <a href='{feedbackUrl}'>here</a>.");
@@ -51,9 +51,10 @@ public class EmailController : Controller
     {
         // Retrieve the customer by ID
         Customer customer = _Context.Customers.Find(id);
-
+        
         if (customer != null)
         {
+            
             // Pass the customer model to the feedback view
             return View(customer);
         }
@@ -62,6 +63,24 @@ public class EmailController : Controller
         return NotFound();
     }
 
+    [HttpPost]
+    public IActionResult Feedback(int id, int feedback)
+    {
+        var customer = _Context.Customers.Find(id);
+        if (customer == null)
+        {
+            return NotFound();
+        }
+        customer.Feedback = feedback;
+        _Context.SaveChanges();
+
+        return RedirectToAction("ThankYou");
+    }
+
+    public IActionResult ThankYou()
+    {
+        return View();
+    }
     //[HttpPost]
     //public ActionResult Feedback(int id, string feedback)
     //{
