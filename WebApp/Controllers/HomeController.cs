@@ -30,11 +30,13 @@ namespace YourNamespace.Controllers
         {
             return View();
         }
+
         [HttpGet]
-        public IActionResult Upload()
+        public IActionResult CreateCustomer()
         {
             return View();
         }
+        [HttpPost]
         public IActionResult CreateCustomer(Customer customer)
         {
             if (ModelState.IsValid)
@@ -43,11 +45,16 @@ namespace YourNamespace.Controllers
 
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
-
-                return View("Index",customer); // Redirect to a success page
+                TempData["success"] = "Customer Created";
+                return RedirectToAction("Index"); // Redirect to a success page
             }
 
-            return View("Index"); // Show the form again with validation errors
+            return View(customer); // Show the form again with validation errors
+        }
+        [HttpGet]
+        public IActionResult Upload()
+        {
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> Upload(FileUploadViewModel model)
