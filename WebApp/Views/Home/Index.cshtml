@@ -1,19 +1,63 @@
-﻿
-<h1>Review Management System</h1>
-
-
-
-<div class="row mt-4">
-    <div class="col-6 col-md-3">
-        <a asp-action="CreateCustomer" asp-asp-controller="Home" class="btn btn-dark">Create Customer</a>
+﻿@model IEnumerable<Customer>
+<div class="card shadow border-0 mt-4">
+    @*<img class="card-img-top" src="~/photo/reviewImage.jpg" alt="Card image cap">*@
+    <div class="card-header bg-dark bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Review Management System</h2>
+            </div>
+        </div>
     </div>
-    <div class="col-6 col-md-3">
-        <a asp-controller="Home" asp-action="Upload" class="btn btn-outline-dark">upload Excel File</a>
+    <div class="card-body p-4">
+        <div class="row mt-4">
+            <div class="col-4 col-md-4">
+                <a asp-action="CreateCustomer" asp-asp-controller="Home" class="btn btn-dark form-control">Create Customer</a>
+            </div>
+            <div class="col-4 col-md-4">
+                <a asp-controller="Home" asp-action="Upload" class="btn btn-outline-dark form-control">upload Excel File</a>
+            </div>
+            <div class="col-4 col-md-4">
+                <a asp-controller="Home" asp-action="Upload" class="btn btn-outline-dark form-control">Send Email</a>
+            </div>
+        </div>
     </div>
 </div>
 
 
-
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="myTable" class="display">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Checkout date</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.CheckoutDate</td>
+                            <td>@item.Email</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
 @*<h1>Upload Excel File</h1>
 
 <div class="row">
