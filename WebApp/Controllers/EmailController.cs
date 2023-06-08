@@ -72,8 +72,9 @@ public class EmailController : Controller
             return NotFound();
         }
         customer.Feedback = feedback;
+        customer.IsFeedbackProvided = true;
         _Context.SaveChanges();
-
+        
         return RedirectToAction("ThankYou");
     }
 
