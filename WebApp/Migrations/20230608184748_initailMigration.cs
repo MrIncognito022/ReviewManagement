@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class initialMigration : Migration
+    public partial class initailMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,10 @@ namespace WebApp.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CheckoutDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TodayDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    TodayDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsEmailSent = table.Column<bool>(type: "bit", nullable: false),
+                    IsFeedbackProvided = table.Column<bool>(type: "bit", nullable: false),
+                    Feedback = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

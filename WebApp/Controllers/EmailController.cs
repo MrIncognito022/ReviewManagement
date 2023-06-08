@@ -23,16 +23,22 @@ public class EmailController : Controller
     [HttpGet]
     public IActionResult SendFeedbackEmails()
     {
-        List<Customer> customers = _Context.Customers.ToList();
+        List<Customer> customers = _Context.Customers.Where(x=>x.IsEmailSent==false).ToList();
 
         foreach (Customer customer in customers)
         {
+
             // Generate a unique feedback URL for each customer
             string feedbackUrl = $"https://localhost:7129/feedback/{customer.Id}";
 
             // Send email with feedback link to the customer's email
             SendEmail(customer.Email, "Feedback Request", $"Please provide your feedback <a href='{feedbackUrl}'>here</a>.");
-
+            var customerToUpdate = _Context.Customers.FirstOrDefault(c => c.Id == customer.Id);
+            if (customerToUpdate != null)
+            {
+                customerToUpdate.IsEmailSent = true;
+                _Context.SaveChanges();
+            }
             // You can save the feedback URL in the database if needed
             // customer.FeedbackUrl = feedbackUrl;
         }
@@ -40,22 +46,21 @@ public class EmailController : Controller
         return RedirectToAction ("Index","Home");
     }
 
-    // Action to handle customer feedback
-    // [HttpGet]
-    //public ActionResult Feedback(int id)
-    //{
-    //    // Retrieve the customer by ID
-    //    Customer customer = _dbContext.Customers.Find(id);
+    [HttpGet]
+    public ActionResult Feedback(int id)
+    {
+        // Retrieve the customer by ID
+        Customer customer = _Context.Customers.Find(id);
 
-    //    if (customer != null)
-    //    {
-    //        // Pass the customer model to the feedback view
-    //        return View(customer);
-    //    }
+        if (customer != null)
+        {
+            // Pass the customer model to the feedback view
+            return View(customer);
+        }
 
-    //    // Handle the case when customer is not found
-    //    return HttpNotFound();
-    //}
+        // Handle the case when customer is not found
+        return NotFound();
+    }
 
     //[HttpPost]
     //public ActionResult Feedback(int id, string feedback)

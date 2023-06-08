@@ -29,5 +29,11 @@ namespace WebApp.Models
         [Display(Name = "Today's Date")]
         [DataType(DataType.Date)]
         public DateTime TodayDate { get; set; }
+
+        public bool IsEmailSent { get; set; } = false;
+
+        public bool IsFeedbackProvided { get; set; } = false;
+        public int Feedback { get; set; } = 0;
+
     }
 }
