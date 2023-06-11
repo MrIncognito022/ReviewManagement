@@ -255,11 +255,11 @@
                 });
             }
             else {
-                //swal({
-                //    title: "Good job!",
-                //    text: "You Feedback is submitted!",
-                //    icon: "success",
-                //});
+                swal({
+                    title: "Good job!",
+                    text: "You Feedback is submitted!",
+                    icon: "success",
+                });
                 sendDataToController();
             }
             return;
@@ -273,18 +273,13 @@
             console.log(selectedRating3)
             console.log(customerId);
             var Feedback = {
-
-
                 // Your data properties
                 Id: customerId,
                 Feedback1: selectedRating1,
                 Feedback2: selectedRating2,
                 Feedback3: selectedRating3
             };
-
             $.ajax({
-
-
                 type: 'POST',
                 dataType: 'JSON',
                 url: '/Email/FeedbackFromCustomer',

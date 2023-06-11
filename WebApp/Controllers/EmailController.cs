@@ -66,18 +66,17 @@ public class EmailController : Controller
     [HttpPost]
     public IActionResult FeedbackFromCustomer(int id, int feedback1,int feedback2, int feedback3 )
     {
-        //var customer = _Context.Customers.Find(feedback.Id);
-        //if (customer == null)
-        //{
-        //    return NotFound();
-        //}
-        ///*ustomer.Feedback = feedback1;*/
-        //customer.IsFeedbackProvided = true;
-        //_Context.SaveChanges();
-        return RedirectToAction("ThankYou", "Email");
+        var customer = _Context.Customers.Find(id);
+        if (customer == null)
+        {
+            return NotFound();
+        }
+        customer.Feedback = feedback1;
+        customer.IsFeedbackProvided = true;
+        _Context.SaveChanges();
+        return RedirectToAction("Thanks");
     }
-
-    public IActionResult ThankYou()
+    public IActionResult Thanks()
     {
         return View();
     }
