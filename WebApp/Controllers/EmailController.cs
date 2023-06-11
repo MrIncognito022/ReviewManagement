@@ -76,10 +76,12 @@ public class EmailController : Controller
         _Context.SaveChanges();
         return RedirectToAction("Thanks");
     }
+
     public IActionResult Thanks()
     {
         return View();
     }
+    
     //[HttpPost]
     //public ActionResult Feedback(int id, string feedback)
     //{

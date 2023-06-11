@@ -251,19 +251,17 @@
                 swal({
                     title: "Oops...",
                     text: "You Feedback is alreaddy submitted!",
-                    icon: "success",
+                    icon: "error",
                 });
             }
             else {
-                swal({
-                    title: "Good job!",
-                    text: "You Feedback is submitted!",
-                    icon: "success",
-                });
+                //swal({
+                //    title: "Thank You!",
+                //    text: "You Feedback is submitted!",
+                //    icon: "success",
+                //});
                 sendDataToController();
             }
-            return;
-
         }
 
         
@@ -285,10 +283,12 @@
                 url: '/Email/FeedbackFromCustomer',
                 data: { id: customerId, feedback1: selectedRating1, feedback2: selectedRating2, feedback3: selectedRating3 },
                 success: function (response) {
-                    console.log("Scccess in Ajax Call")
+                    console.log("Ajax Succes")
                 },
                 error: function (xhr, status, error) {
-                    console.log(xhr.responseText)
+                    console.log("Ajax error")
+                    console.log(error)
+                    window.location.href = "https://localhost:7129/Email/thanks";
                     // Handle any errors that occur during the request
                 }
             });
