@@ -23,7 +23,7 @@ public class EmailController : Controller
     [HttpGet]
     public IActionResult SendFeedbackEmails()
     {
-        List<Customer> customers = _Context.Customers.Where(x=>x.IsEmailSent==false).ToList();
+        List<Customer> customers = _Context.Customers.Where(x => x.IsEmailSent == false).ToList();
 
         foreach (Customer customer in customers)
         {
@@ -43,7 +43,7 @@ public class EmailController : Controller
             // customer.FeedbackUrl = feedbackUrl;
         }
         TempData["success1"] = "Email send Successfully";
-        return RedirectToAction ("Index","Home");
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpGet]
@@ -51,10 +51,10 @@ public class EmailController : Controller
     {
         // Retrieve the customer by ID
         Customer customer = _Context.Customers.Find(id);
-        
+
         if (customer != null)
         {
-            
+
             // Pass the customer model to the feedback view
             return View(customer);
         }
@@ -64,18 +64,17 @@ public class EmailController : Controller
     }
 
     [HttpPost]
-    public IActionResult Feedback(int id, int feedback)
+    public IActionResult FeedbackFromCustomer(int id, int feedback1,int feedback2, int feedback3 )
     {
-        var customer = _Context.Customers.Find(id);
-        if (customer == null)
-        {
-            return NotFound();
-        }
-        customer.Feedback = feedback;
-        customer.IsFeedbackProvided = true;
-        _Context.SaveChanges();
-        
-        return RedirectToAction("ThankYou");
+        //var customer = _Context.Customers.Find(feedback.Id);
+        //if (customer == null)
+        //{
+        //    return NotFound();
+        //}
+        ///*ustomer.Feedback = feedback1;*/
+        //customer.IsFeedbackProvided = true;
+        //_Context.SaveChanges();
+        return RedirectToAction("ThankYou", "Email");
     }
 
     public IActionResult ThankYou()

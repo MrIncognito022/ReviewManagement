@@ -1,17 +1,304 @@
 ﻿@model Customer
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
 
-<form method="post" class="row" asp-action="Feedback" asp-controller="Email">
-    <input asp-for="Id" type="hidden"/>
-    <div class="border p-3">
-        <div class="form-floating py-2 col-12">
-            <input asp-for="Feedback" class="form-control border-0 shadow" />
-            <label asp-for="Feedback" class="ms-2"></label>
-            <span asp-validation-for="Feedback" class="text-danger"></span>
-        </div>
-        <div class="row mt-4">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-dark form-control">Create</button>
+<head>
+    <title>Feedback Option</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="mx-0 mx-sm-auto">
+            <div class="card">
+                <div class="card-header bg-dark">
+                    <h5 class="card-title text-white mt-2" id="exampleModalLabel">Feedback request</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+                        <p>
+                            <strong>Your opinion matters</strong>
+                        </p>
+                        <p>
+                            Have some ideas how to improve our services?
+                            <strong>Give us your feedback.</strong>
+                        </p>
+                    </div>
+                    <hr />
+                    <form class="px-4" action="">
+                        <p class="text-center p-2 font-weight-bold">
+                            How likely would you like to
+                            recommend this
+                            hotel to
+                            somone
+                            else, if they were to require hotel in this area in future
+                        </p>
+
+                        <div class=" form-check mb-2" style="margin-left: 45%;">
+                            <input class="form-check-input feedback" type="radio" name="exampleForm" id="1"
+                                   onclick="selectRating1(1)" />
+                            <label class="form-check-label " for="radio3Example1">
+                                Very good
+                            </label>
+                        </div>
+                        <div class="form-check mb-2" style="margin-left: 45%;">
+                            <input class="form-check-input feedback" type="radio" name="exampleForm" id="2"
+                                   onclick="selectRating1(2)" />
+                            <label class="form-check-label" for="radio3Example2">
+                                Good
+                            </label>
+                        </div>
+                        <div class="form-check mb-2" style="margin-left: 45%;">
+                            <input class="form-check-input feedback" type="radio" name="exampleForm" id="3"
+                                   onclick="selectRating1(3)" />
+                            <label class="form-check-label" for="radio3Example3">
+                                Medicore
+                            </label>
+                        </div>
+                        <div class="form-check mb-2" style="margin-left: 45%;">
+                            <input class="form-check-input feedback" type="radio" name="exampleForm" id="4"
+                                   onclick="selectRating1(4)" />
+                            <label class="form-check-label" for="radio3Example4">
+                                Bad
+                            </label>
+                        </div>
+                        <div class="form-check mb-2" style="margin-left: 45%;">
+                            <input class="form-check-input feedback" type="radio" name="exampleForm" id="5"
+                                   onclick="selectRating1(5)" />
+                            <label class="form-check-label" for="radio3Example5">
+                                Very bad
+                            </label>
+                        </div>
+                        <!-- --------------------------------------------------------- -->
+                        <div class="mx-0 mx-sm-auto mt-4">
+                            <div class="text-center">
+                                <p>
+                                    <strong>Quality of our Service?</strong>
+                                </p>
+                            </div>
+                            <div class="btn-toolbar justify-content-center" role="toolbar"
+                                 aria-label="Toolbar with button groups">
+                                <div class="btn-group me-2" role="group" aria-label="First group">
+                                    <button id="11" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(1)">
+                                        1
+                                    </button>
+                                    <button id="12" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(2)">
+                                        2
+                                    </button>
+                                    <button id="13" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(3)">
+                                        3
+                                    </button>
+                                    <button id="14" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(4)">
+                                        4
+                                    </button>
+                                    <button id="15" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(5)">
+                                        5
+                                    </button>
+                                    <button id="16" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(6)">
+                                        6
+                                    </button>
+                                    <button id="17" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(7)">
+                                        7
+                                    </button>
+                                    <button id="18" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(8)">
+                                        8
+                                    </button>
+                                    <button id="19" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(9)">
+                                        9
+                                    </button>
+                                    <button id="20" type="button" class="btn btn-light px-4 feedback2"
+                                            onclick="selectRating2(10)">
+                                        10
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- ------------------------------------------------------------ -->
+                            <div class="text-center mt-4">
+                                <p>
+                                    <strong>Your Overall Experience?</strong>
+                                </p>
+                            </div>
+                            <div class="btn-toolbar justify-content-center" role="toolbar"
+                                 aria-label="Toolbar with button groups">
+                                <div class="btn-group" role="group" aria-label="First group">
+                                    <button id="21" type="button" class="btn btn-light px-4 feedback3"
+                                            onclick="selectRating3(1)">
+                                        1
+                                    </button>
+                                    <button id="22" type="button" class="btn btn-light px-4 feedback3"
+                                            onclick="selectRating3(2)">
+                                        2
+                                    </button>
+                                    <button id="23" type="button" class="btn btn-light px-4 feedback3"
+                                            onclick="selectRating3(3)">
+                                        3
+                                    </button>
+                                    <button id="24" type="button" class="btn btn-light px-4 feedback3"
+                                            onclick="selectRating3(4)">
+                                        4
+                                    </button>
+                                    <button id="25" type="button" class="btn btn-light px-4 feedback3"
+                                            onclick="selectRating3(5)">
+                                        5
+                                    </button>
+                                    <button id="26" type="button" class="btn btn-light px-4 feedback3"
+                                            onclick="selectRating3(6)">
+                                        6
+                                    </button>
+                                    <button id="27" type="button" class="btn btn-light px-4 feedback3 "
+                                            onclick="selectRating3(7)">
+                                        7
+                                    </button>
+                                    <button id="28" type="button" class="btn btn-light px-4 feedback3 "
+                                            onclick="selectRating3(8)">
+                                        8
+                                    </button>
+                                    <button id="29" type="button" class="btn btn-light px-4 feedback3 "
+                                            onclick="selectRating3(9)">
+                                        9
+                                    </button>
+                                    <button id="30" type="button" class="btn btn-light px-4 feedback3"
+                                            onclick="selectRating3(10)">
+                                        10
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-center mt-5"><strong>What could we improve?</strong></p>
+                            <!-- Message input -->
+                            <div class="form-outline mb-4">
+                                <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+                                <label class="form-label" for="form4Example3">Your feedback</label>
+                            </div>
+                    </form>
+                </div>
+                <div class="card-footer text-end">
+                    <button type="button" class="btn btn-primary" onclick="submitFeedback()">Submit</button>
+                </div>
             </div>
         </div>
     </div>
-</form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        
+        let selectedRating1 = 0;
+        let selectedRating2 = 0;
+        let selectedRating3 = 0;
+        let customerId = @JsonSerializer.Serialize(Model.Id);
+        let isFeedbackProvided = @JsonSerializer.Serialize(Model.IsFeedbackProvided);
+        console.log(isFeedbackProvided);
+        console.log(typeof(customerId))
+        console.log(typeof (selectedRating1))
+        function selectRating1(rating) {
+            // const feedbackElements = document.querySelectorAll('.feedback1');
+            // feedbackElements.forEach(element => {
+            //     if (element.classList.contains('active')) {
+            //         element.classList.remove('active')
+            //     }
+            // });
+            selectedRating1 = rating;
+        }
+        function selectRating2(rating) {
+            const feedbackElements = document.querySelectorAll('.feedback2');
+            feedbackElements.forEach(element => {
+                if (element.classList.contains('active')) {
+                    element.classList.remove('active')
+                }
+            });
+            let ele = document.getElementById(`${rating + 10}`);
+            ele.classList.add("active");
+            selectedRating2 = rating;
+        }
+
+        function selectRating3(rating) {
+            const feedbackElements = document.querySelectorAll('.feedback3');
+            feedbackElements.forEach(element => {
+                if (element.classList.contains('active')) {
+                    element.classList.remove('active')
+                }
+            });
+            let ele = document.getElementById(`${rating + 20}`);
+            ele.classList.add("active");
+            selectedRating3 = rating;
+        }
+
+        
+        function submitFeedback() {
+            
+            if (selectedRating1 == 0 || selectedRating2 == 0 || selectedRating3 == 0) {
+                swal({
+                    title: "Oops...",
+                    text: "Please select all feedback",
+                    icon: "error",
+                });
+            }
+            else if(isFeedbackProvided == true){
+                swal({
+                    title: "Oops...",
+                    text: "You Feedback is alreaddy submitted!",
+                    icon: "success",
+                });
+            }
+            else {
+                //swal({
+                //    title: "Good job!",
+                //    text: "You Feedback is submitted!",
+                //    icon: "success",
+                //});
+                sendDataToController();
+            }
+            return;
+
+        }
+
+        
+        function sendDataToController() {
+            console.log(selectedRating1)
+            console.log(selectedRating2)
+            console.log(selectedRating3)
+            console.log(customerId);
+            var Feedback = {
+
+
+                // Your data properties
+                Id: customerId,
+                Feedback1: selectedRating1,
+                Feedback2: selectedRating2,
+                Feedback3: selectedRating3
+            };
+
+            $.ajax({
+
+
+                type: 'POST',
+                dataType: 'JSON',
+                url: '/Email/FeedbackFromCustomer',
+                data: { id: customerId, feedback1: selectedRating1, feedback2: selectedRating2, feedback3: selectedRating3 },
+                success: function (response) {
+                    console.log("Scccess in Ajax Call")
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText)
+                    // Handle any errors that occur during the request
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
