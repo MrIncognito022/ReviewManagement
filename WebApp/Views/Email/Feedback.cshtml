@@ -82,9 +82,14 @@
                                     <strong>Quality of our Service?</strong>
                                 </p>
                             </div>
+                            
                             <div class="btn-toolbar justify-content-center" role="toolbar"
                                  aria-label="Toolbar with button groups">
                                 <div class="btn-group me-2" role="group" aria-label="First group">
+                                    <button id="11" type="button" disabled class="btn  px-5 "
+                                            >
+                                        Poor
+                                    </button>
                                     <button id="11" type="button" class="btn btn-light px-4 feedback2"
                                             onclick="selectRating2(1)">
                                         1
@@ -125,6 +130,10 @@
                                             onclick="selectRating2(10)">
                                         10
                                     </button>
+                                    <button id="11" type="button" disabled class="btn text-black px-5 "
+                                            >
+                                        Excellent
+                                    </button>
                                 </div>
                             </div>
                             <!-- ------------------------------------------------------------ -->
@@ -136,6 +145,10 @@
                             <div class="btn-toolbar justify-content-center" role="toolbar"
                                  aria-label="Toolbar with button groups">
                                 <div class="btn-group" role="group" aria-label="First group">
+                                    <button id="11" type="button" disabled class="btn btn-light px-5"
+                                            >
+                                        poor
+                                    </button>
                                     <button id="21" type="button" class="btn btn-light px-4 feedback3"
                                             onclick="selectRating3(1)">
                                         1
@@ -175,6 +188,10 @@
                                     <button id="30" type="button" class="btn btn-light px-4 feedback3"
                                             onclick="selectRating3(10)">
                                         10
+                                    </button>
+                                    <button id="11" type="button" disabled class="btn btn-light px-5 "
+                                            >
+                                        Excellent
                                     </button>
                                 </div>
                             </div>
@@ -247,19 +264,19 @@
                     icon: "error",
                 });
             }
-            else if(isFeedbackProvided == true){
-                swal({
-                    title: "Oops...",
-                    text: "You Feedback is alreaddy submitted!",
-                    icon: "error",
-                });
-            }
+            //else if(isFeedbackProvided == true){
+            //    swal({
+            //        title: "Oops...",
+            //        text: "You Feedback is alreaddy submitted!",
+            //        icon: "error",
+            //    });
+            //}
             else {
-                //swal({
-                //    title: "Thank You!",
-                //    text: "You Feedback is submitted!",
-                //    icon: "success",
-                //});
+                swal({
+                    title: "Thank You!",
+                    text: "You Feedback is submitted successfully!",
+                    icon: "success",
+                });
                 sendDataToController();
             }
         }
@@ -286,9 +303,8 @@
                     console.log("Ajax Succes")
                 },
                 error: function (xhr, status, error) {
-                    console.log("Ajax error")
-                    console.log(error)
-                    window.location.href = "https://localhost:7129/Email/thanks";
+                   
+                    
                     // Handle any errors that occur during the request
                 }
             });
