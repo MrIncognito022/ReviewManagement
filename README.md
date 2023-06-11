@@ -6,8 +6,6 @@ Add-Migration MigrationName
 update-database
 
 before running migration provide a correct database connection string in appsetting.json file
-
-#Email
-setting
+#Emailsetting
 Provide you correct email in Email Controller SendFeedbackEmails Action
 
